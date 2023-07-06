@@ -1,12 +1,18 @@
 package com.solvd.distancecalculator.models;
 
-import java.util.List;
-
 public class PathBetweenStations {
+    private int pathID;
     private int startingStationID;
     private int endingStationID;
-    private List<Road> roads;
-    private List<Station> otherStations;
+    private int connectingRoadID;
+
+    public int getPathID() {
+        return pathID;
+    }
+
+    public void setPathID(int pathID) {
+        this.pathID = pathID;
+    }
 
     public int getStartingStationID() {
         return this.startingStationID;
@@ -24,19 +30,11 @@ public class PathBetweenStations {
         this.endingStationID = endingStationID;
     }
 
-    public List<Road> getRoads() {
-        return this.roads;
+    public int getConnectingRoadID() {
+        return connectingRoadID;
     }
 
-    public void setRoads(List<Road> roads) {
-        this.roads = roads;
-    }
-
-    public List<Station> getOtherStations() {
-        return this.otherStations;
-    }
-
-    public void setOtherStations(List<Station> otherStations) {
-        this.otherStations = otherStations;
+    public void setConnectingRoadID(int connectingRoadID) {
+        this.connectingRoadID = connectingRoadID;
     }
 }
