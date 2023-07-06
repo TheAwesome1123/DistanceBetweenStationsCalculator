@@ -23,6 +23,14 @@ public class Main {
 
             List<PathBetweenStations> list = new PathBetweenStationsDAO().getPaths();
             LOGGER.info("Number of roads: " + list.size());
+
+            // Primarily for testing; feel free to delete if unnecessary.
+            FloydAlgorithm.addInitialDistances(distances, list);
+            FloydAlgorithm.printDistances(distances);
+
+            // Insert Floyd's Algorithm implementation here.
+
+            // Insert marshalling here.
         }
         catch(NumberFormatException numberFormatException) {
             LOGGER.info(numberFormatException);

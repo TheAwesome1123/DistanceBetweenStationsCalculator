@@ -17,5 +17,6 @@
     <mappers>
         <mapper resource="PathBetweenStationsMapper.xml"/>
         <mapper resource="RoadMapper.xml"/>
+        <mapper resource="StationMapper.xml"/>
     </mappers>
 </configuration>
