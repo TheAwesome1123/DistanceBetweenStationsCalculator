@@ -3,6 +3,7 @@ package com.solvd.distancecalculator.models;
 public class Road {
     private int id;
     private String name;
+    private int distance;
 
     public int getID() {
         return this.id;
@@ -18,5 +19,13 @@ public class Road {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
     }
 }
