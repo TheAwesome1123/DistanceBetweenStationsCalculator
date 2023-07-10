@@ -14,6 +14,7 @@ public class FloydAlgorithm {
     private static final Logger LOGGER = LogManager.getLogger(FloydAlgorithm.class);
     private static final Integer INFINITY = Integer.MAX_VALUE;
     private static final StationDAO STATION_DAO = new StationDAO();
+    private static final RoadDAO ROAD_DAO = new RoadDAO();
 
     public static Integer[][] getMatrix(int numOfStations) {
         // Each row and column corresponds to station ID.
@@ -40,7 +41,7 @@ public class FloydAlgorithm {
             int startStationID = pathBetweenStations.getStartingStationID();
             int endStationID = pathBetweenStations.getEndingStationID();
             int roadID = pathBetweenStations.getConnectingRoadID();
-            int roadDistance = new RoadDAO().getRoad(roadID).getDistance();
+            int roadDistance = ROAD_DAO.getRoad(roadID).getDistance();
 
             matrix[startStationID][endStationID] = roadDistance;
         }
