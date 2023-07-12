@@ -23,7 +23,6 @@ public class Main {
             int numOfPaths = PATH_BETWEEN_STATIONS_DAO.getNumOfPathsInDB();
 
             // Insert select here to get actual number of stations.
-
             Integer[][] distances = FloydAlgorithm.getMatrix(numOfPaths);
             Integer[][] stationsInShortestPath = FloydAlgorithm.getMatrix(numOfPaths);
 
