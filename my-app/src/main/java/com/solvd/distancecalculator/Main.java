@@ -39,7 +39,13 @@ public class Main {
 
 
             // Insert Floyd's Algorithm implementation here.
-
+            // test matrix
+            Integer graph[][] = { { 0, 5, INF, 10 },
+                    { INF, 0, 3, INF },
+                    { INF, INF, 0, 1 },
+                    { INF, INF, INF, 0 } };
+            FloydAlgorithm.runAlgorithm(graph,V);
+            FloydAlgorithm.printDistances(graph);
 
             // Setting up ShortestPath for marshalling.
             Stations stations = new Stations();

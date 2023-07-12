@@ -400,3 +400,9 @@ Number of roads: 10
 Calculating shortest distance between stations 1 and 2
 Number of roads: 10
 Calculating shortest distance between stations 1 and 2
+Number of roads: 10
+Calculating shortest distance between stations 1 and 2
+0 5 8 9 
+99999 0 3 4 
+99999 99999 0 1 
+99999 99999 99999 0 
