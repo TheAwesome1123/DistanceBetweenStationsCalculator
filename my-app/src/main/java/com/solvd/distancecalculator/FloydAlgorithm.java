@@ -17,4 +17,24 @@ public class FloydAlgorithm {
 
         return distances;
     }
+
+    public static Integer[][] runAlgorithm(Integer[][] distance,int vertices) {
+        for (int k = 0; k < vertices; k++) {
+            // Pick all vertices as source one by one
+            for (int i = 0; i < vertices; i++) {
+                // Pick all vertices as destination for the
+                // above picked source
+                for (int j = 0; j < vertices; j++) {
+                    // If vertex k is on the shortest path
+                    // from i to j, then update the value of
+                    // distance[i][j]
+                    if (distance[i][j] > distance[i][k] + distance[k][j]){
+                        distance[i][j] = distance[i][k] + distance[k][j];
+                    }
+                }
+            }
+        }
+        return distance;
+    }
+
 }
