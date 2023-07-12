@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <path>
-    <distance>3</distance>
+    <distance>4</distance>
     <stations>
         <station>
             <stationID>1</stationID>
             <stationName>Lotus Lake</stationName>
         </station>
         <station>
-            <stationID>2</stationID>
-            <stationName>Hope Meadows</stationName>
+            <stationID>0</stationID>
+            <stationName>Rivermouth</stationName>
+        </station>
+        <station>
+            <stationID>9</stationID>
+            <stationName>Oakland</stationName>
         </station>
     </stations>
     <roads>
         <road>
-            <roadID>1</roadID>
-            <roadName>Woodland Way</roadName>
-            <length>3</length>
+            <roadID>0</roadID>
+            <roadName>Eastgate</roadName>
+            <length>2</length>
+        </road>
+        <road>
+            <roadID>9</roadID>
+            <roadName>Westway</roadName>
+            <length>2</length>
         </road>
     </roads>
 </path>

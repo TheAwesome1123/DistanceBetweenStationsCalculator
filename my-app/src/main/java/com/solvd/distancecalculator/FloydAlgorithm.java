@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public class FloydAlgorithm {
     private static final Logger LOGGER = LogManager.getLogger(FloydAlgorithm.class);
-    private static final Integer INFINITY = Integer.MAX_VALUE;
+    private static final Integer INFINITY = 9999;
     private static final StationDAO STATION_DAO = new StationDAO();
     private static final RoadDAO ROAD_DAO = new RoadDAO();
 
@@ -43,7 +43,9 @@ public class FloydAlgorithm {
             int roadID = pathBetweenStations.getConnectingRoadID();
             int roadDistance = ROAD_DAO.getRoad(roadID).getDistance();
 
+            // Roads are two-way.
             matrix[startStationID][endStationID] = roadDistance;
+            matrix[endStationID][startStationID] = roadDistance;
         }
     }
 
@@ -60,7 +62,9 @@ public class FloydAlgorithm {
                     paths[i][j] = null;
                 }
                 else {
+                    // Roads are two-way.
                     paths[i][j] = j;
+                    paths[j][i] = i;
                 }
             }
         }
@@ -92,42 +96,48 @@ public class FloydAlgorithm {
             Station lastStation = STATION_DAO.getStation(endStationID);
 
             stationsInPath.add(firstStation);
-            getIntermediateStation(stationsInPath, stationsInShortestPaths, startStationID, endStationID);
+            Station intermediateStation =
+                getIntermediateStation(stationsInShortestPaths, startStationID, endStationID);
+
+            while(intermediateStation != null) {
+                stationsInPath.add(intermediateStation);
+                intermediateStation = getIntermediateStation(stationsInShortestPaths,
+                    intermediateStation.getID(), endStationID);
+            }
+
             stationsInPath.add(lastStation);
 
             return stationsInPath;
     }
 
-    public static void getIntermediateStation(List<Station> stations, Integer[][] stationsInShortestPaths,
+    public static Station getIntermediateStation(Integer[][] stationsInShortestPaths,
         int startStationID, int endStationID) {
             if(stationsInShortestPaths[startStationID][endStationID] == endStationID) {
-                return;
+                return null;
             }
             else {
                 // Get intermediate stations until the end station in the shortest path is the given end one.
                 int intermediateStationID = stationsInShortestPaths[startStationID][endStationID];
-                Station intermediateStation = STATION_DAO.getStation(intermediateStationID);
-                stations.add(intermediateStation);
-                getIntermediateStation(stations, stationsInShortestPaths, intermediateStationID, endStationID);
+                return STATION_DAO.getStation(intermediateStationID);
             }
     }
 
-    public static Integer[][] runAlgorithm(Integer[][] distance,int vertices) {
-        for (int k = 0; k < vertices; k++) {
+    public static void runAlgorithm(Integer[][] distance, Integer[][] shortestPaths) {
+        for (int k = 0; k < distance.length; k++) {
             // Pick all vertices as source one by one
-            for (int i = 0; i < vertices; i++) {
+            for (int i = 0; i < distance.length; i++) {
                 // Pick all vertices as destination for the
                 // above picked source
-                for (int j = 0; j < vertices; j++) {
+                for (int j = 0; j < distance.length; j++) {
                     // If vertex k is on the shortest path
                     // from i to j, then update the value of
                     // distance[i][j]
                     if (distance[i][j] > distance[i][k] + distance[k][j]){
                         distance[i][j] = distance[i][k] + distance[k][j];
+                        shortestPaths[i][j] = k;
                     }
                 }
             }
         }
-        return distance;
     }
 }

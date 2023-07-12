@@ -6,7 +6,7 @@
     <select id="selectRoad" resultMap="roadMapper" parameterType="int">
         SELECT ID, Name, Distance FROM Roads where ID = #{id}
     </select>
-    <select id="selectRoadGivenStartAndEnd" resultType="int" parameterType="com.solvd.distancecalculator.models.PathBetweenStations">
+    <select id="selectRoadGivenStartAndEnd" resultType="java.lang.Integer" parameterType="com.solvd.distancecalculator.models.PathBetweenStations">
         SELECT Connecting_Road_ID FROM StationsAndConnectingRoads WHERE Start_Station_ID = #{startingStationID} AND
             End_Station_ID = #{endingStationID}
     </select>
