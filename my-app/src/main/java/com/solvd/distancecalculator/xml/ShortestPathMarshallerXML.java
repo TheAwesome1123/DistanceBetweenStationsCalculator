@@ -8,8 +8,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.File;
 
-public class ShortestPathMarshaller {
-    private static final Logger LOGGER = LogManager.getLogger(ShortestPathMarshaller.class);
+public class ShortestPathMarshallerXML {
+    private static final Logger LOGGER = LogManager.getLogger(ShortestPathMarshallerXML.class);
 
     public static void marshallXML(ShortestPath path) {
         try {

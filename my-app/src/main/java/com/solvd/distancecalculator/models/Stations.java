@@ -8,14 +8,14 @@ import java.util.List;
 @XmlRootElement(name = "stations")
 public class Stations {
     @XmlElement(name = "station")
-    private List<Station> stationList;
+    private List<Station> stations;
 
     @XmlTransient
     public List<Station> getStationList() {
-        return stationList;
+        return stations;
     }
 
     public void setStationList(List<Station> stationList) {
-        this.stationList = stationList;
+        this.stations = stationList;
     }
 }
