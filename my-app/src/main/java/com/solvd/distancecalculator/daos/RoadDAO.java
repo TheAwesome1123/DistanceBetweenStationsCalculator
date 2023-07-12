@@ -1,5 +1,6 @@
 package com.solvd.distancecalculator.daos;
 
+import com.solvd.distancecalculator.models.PathBetweenStations;
 import com.solvd.distancecalculator.models.Road;
 import com.solvd.distancecalculator.services.SqlSessionFactoryGetter;
 import org.apache.ibatis.session.SqlSession;
@@ -14,6 +15,15 @@ public class RoadDAO {
             session.commit();
 
             return road;
+        }
+    }
+
+    public Road getRoadGivenStartAndEnd(PathBetweenStations path) {
+        try(SqlSession session = factory.openSession()) {
+            int roadID = session.selectOne("RoadMapper.xml.selectRoadGivenStartAndEnd", path);
+            session.commit();
+
+            return getRoad(roadID);
         }
     }
 }

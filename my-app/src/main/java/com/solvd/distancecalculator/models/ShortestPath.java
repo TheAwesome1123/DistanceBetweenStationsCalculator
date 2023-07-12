@@ -2,46 +2,42 @@ package com.solvd.distancecalculator.models;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.List;
 
 @XmlRootElement(name = "path")
 public class ShortestPath {
-    private Station start;
-    private Station end;
-    private List<Station> intermediateStations;
-    private List<Road> roads;
+    @XmlElement(name = "distance")
+    private int distance;
+    @XmlElement(name = "stations")
+    private Stations stations;
+    @XmlElement(name = "roads")
+    private Roads roads;
 
-    @XmlElement(name = "start")
-    public Station getStart() {
-        return start;
+    @XmlTransient
+    public int getDistance() {
+        return distance;
     }
 
-    public void setStart(Station start) {
-        this.start = start;
+    public void setDistance(int distance) {
+        this.distance = distance;
     }
 
-    @XmlElement(name = "end")
-    public Station getEnd() {
-        return end;
+    @XmlTransient
+    public Stations getStations() {
+        return stations;
     }
 
-    public void setEnd(Station end) {
-        this.end = end;
+    public void setStations(Stations stations) {
+        this.stations = stations;
     }
 
-    public List<Station> getIntermediateStations() {
-        return intermediateStations;
-    }
-
-    public void setIntermediateStations(List<Station> intermediateStations) {
-        this.intermediateStations = intermediateStations;
-    }
-
-    public List<Road> getRoads() {
+    @XmlTransient
+    public Roads getRoads() {
         return roads;
     }
 
-    public void setRoads(List<Road> roads) {
+    public void setRoads(Roads roads) {
         this.roads = roads;
     }
 }

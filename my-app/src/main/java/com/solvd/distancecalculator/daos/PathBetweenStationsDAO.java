@@ -17,4 +17,13 @@ public class PathBetweenStationsDAO {
             return paths;
         }
     }
+
+    public int getNumOfPathsInDB() {
+        try(SqlSession session = factory.openSession()) {
+            List<PathBetweenStations> paths = getPaths();
+            session.commit();
+
+            return paths.size();
+        }
+    }
 }
