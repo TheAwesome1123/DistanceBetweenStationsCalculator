@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PathBetweenStationsMapper.xml">
+    <select id="selectPaths" resultMap="pathMapper">
+        SELECT ID, Start_Station_ID, End_Station_ID, Connecting_Road_ID FROM StationsAndConnectingRoads
+    </select>
+    <resultMap id="pathMapper" type="com.solvd.distancecalculator.models.PathBetweenStations">
+        <id property="pathID" column="ID"/>
+        <result property="startingStationID" column="Start_Station_ID"/>
+        <result property="endingStationID" column="End_Station_ID"/>
+        <result property="connectingRoadID" column="Connecting_Road_ID"/>
+    </resultMap>
+</mapper>

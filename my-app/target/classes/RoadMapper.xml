@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RoadMapper.xml">
+    <select id="selectRoad" resultMap="roadMapper" parameterType="int">
+        SELECT ID, Name, Distance FROM Roads where ID = #{id}
+    </select>
+    <select id="selectRoadGivenStartAndEnd" resultType="int" parameterType="com.solvd.distancecalculator.models.PathBetweenStations">
+        SELECT Connecting_Road_ID FROM StationsAndConnectingRoads WHERE Start_Station_ID = #{startingStationID} AND
+            End_Station_ID = #{endingStationID}
+    </select>
+    <resultMap id="roadMapper" type="com.solvd.distancecalculator.models.Road">
+        <id property="id" column="ID"/>
+        <result property="name" column="Name"/>
+        <result property="distance" column="Distance"/>
+    </resultMap>
+</mapper>
