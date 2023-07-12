@@ -18,12 +18,6 @@ public class Main {
             int[][] distances = FloydAlgorithm.getMatrix(10);
             int[][] paths = FloydAlgorithm.getMatrix(10);
 
-            Integer graph[][] = { { 0, 5, INF, 10 },
-                    { INF, 0, 3, INF },
-                    { INF, INF, 0, 1 },
-                    { INF, INF, INF, 0 } };
-            FloydAlgorithm.runAlgorithm(graph,V);
-            FloydAlgorithm.printDistances(graph);
         }
         catch(NumberFormatException numberFormatException) {
             LOGGER.info(numberFormatException);
