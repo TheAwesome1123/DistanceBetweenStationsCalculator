@@ -53,13 +53,14 @@ public class FloydAlgorithm {
     public static void addInitialNodesInShortestDistance(Integer[][] distances, Integer[][] paths) {
         for(int i = 0; i < distances.length; i++) {
             for(int j = 0; j < distances[i].length; j++) {
-                // If start and end station are the same, station in the shortest path is itself.
-                if(distances[i][j] == 0) {
-                    paths[i][j] = i;
+                // If start and end station are the same, station in the shortest path is null.
+                if(i == j) {
+                    paths[i][j] = null;
                 }
                 // Null if no direct connection.
                 else if(Objects.equals(distances[i][j], INFINITY)) {
                     paths[i][j] = null;
+                    paths[j][i] = null;
                 }
                 else {
                     // Roads are two-way.
@@ -134,7 +135,7 @@ public class FloydAlgorithm {
                     // distance[i][j]
                     if (distance[i][j] > distance[i][k] + distance[k][j]){
                         distance[i][j] = distance[i][k] + distance[k][j];
-                        shortestPaths[i][j] = k;
+                        shortestPaths[i][j] = shortestPaths[i][k];
                     }
                 }
             }

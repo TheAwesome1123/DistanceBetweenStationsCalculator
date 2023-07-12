@@ -13,7 +13,6 @@ import java.util.List;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
-    final static int INF = 99999;
     private static final PathBetweenStationsDAO PATH_BETWEEN_STATIONS_DAO = new PathBetweenStationsDAO();
     private static final RoadDAO ROAD_DAO = new RoadDAO();
 
