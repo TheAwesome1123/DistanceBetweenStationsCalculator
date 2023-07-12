@@ -14,8 +14,9 @@ public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
     final static int INF = 99999, V = 4;
     private static final PathBetweenStationsDAO PATH_BETWEEN_STATIONS_DAO = new PathBetweenStationsDAO();
-    
+
     private static final RoadDAO ROAD_DAO = new RoadDAO();
+    
     public static void main(String[] args) {
         try {
             int startingStationID = Integer.parseInt(args[0]);
