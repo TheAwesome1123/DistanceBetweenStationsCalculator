@@ -16,7 +16,7 @@ public class ShortestPathMarshallerXML {
             JAXBContext context = JAXBContext.newInstance(ShortestPath.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            marshaller.marshal(path, new File("./Route.xml"));
+            marshaller.marshal(path, new File("./RouteXML.xml"));
         }
         catch (JAXBException e) {
             LOGGER.info(e);

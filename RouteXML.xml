@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<path>
+    <distance>11</distance>
+    <stations>
+        <station>
+            <stationID>1</stationID>
+            <stationName>Lotus Lake</stationName>
+        </station>
+        <station>
+            <stationID>0</stationID>
+            <stationName>Rivermouth</stationName>
+        </station>
+        <station>
+            <stationID>9</stationID>
+            <stationName>Oakland</stationName>
+        </station>
+        <station>
+            <stationID>8</stationID>
+            <stationName>Maple Grove</stationName>
+        </station>
+        <station>
+            <stationID>7</stationID>
+            <stationName>Sunset</stationName>
+        </station>
+    </stations>
+    <roads>
+        <road>
+            <roadID>0</roadID>
+            <roadName>Eastgate</roadName>
+            <length>2</length>
+        </road>
+        <road>
+            <roadID>9</roadID>
+            <roadName>Westway</roadName>
+            <length>2</length>
+        </road>
+        <road>
+            <roadID>8</roadID>
+            <roadName>St Margaret's Road</roadName>
+            <length>3</length>
+        </road>
+        <road>
+            <roadID>7</roadID>
+            <roadName>Hillside Drive</roadName>
+            <length>4</length>
+        </road>
+    </roads>
+</path>
