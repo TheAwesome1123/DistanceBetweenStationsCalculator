@@ -14,103 +14,16 @@ import java.util.List;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
-    private static final PathBetweenStationsDAO PATH_BETWEEN_STATIONS_DAO = new PathBetweenStationsDAO();
-    private static final StationDAO STATION_DAO = new StationDAO();
-    private static final RoadDAO ROAD_DAO = new RoadDAO();
+    private static FloydHelper helper = new FloydHelper();
 
     public static void main(String[] args) {
         try {
-            int startingStationID = Integer.parseInt(args[0]);
-            int endingStationID = Integer.parseInt(args[1]);
+            marshall(helper.calculateShortestDistance(Integer.parseInt(args[0]),Integer.parseInt(args[1])));
 
-            if(startingStationID == endingStationID) {
-                sameStartAndEnd(startingStationID);
-            }
-            else {
-                differentStartAndEnd(startingStationID, endingStationID);
-            }
         }
         catch(NumberFormatException numberFormatException) {
             LOGGER.info(numberFormatException);
         }
-    }
-
-    public static void sameStartAndEnd(int id) {
-        LOGGER.info("Setting up shortest path.");
-        ShortestPath shortestPath = new ShortestPath();
-        Stations stations = new Stations();
-        Roads roads = new Roads();
-        List<Station> stationList = new ArrayList<>();
-
-        Station station = STATION_DAO.getStation(id);
-        stationList.add(station);
-        stationList.add(station);
-        stations.setStationList(stationList);
-        LOGGER.info("Got stations.");
-
-        shortestPath.setStations(stations);
-        shortestPath.setRoads(roads);
-        shortestPath.setDistance(0);
-
-        marshall(shortestPath);
-    }
-
-    public static void differentStartAndEnd(int startingStationID, int endingStationID) {
-        int numOfPaths = PATH_BETWEEN_STATIONS_DAO.getNumOfPathsInDB();
-
-        // Insert select here to get actual number of stations.
-        Integer[][] distances = FloydAlgorithm.getMatrix(numOfPaths);
-        Integer[][] stationsInShortestPath = FloydAlgorithm.getMatrix(numOfPaths);
-
-        List<PathBetweenStations> list = PATH_BETWEEN_STATIONS_DAO.getPaths();
-        LOGGER.info("Number of roads: " + numOfPaths);
-
-        LOGGER.info("Calculating shortest distance between stations " + startingStationID + " and " +
-                endingStationID);
-
-        // Adding initial distances.
-        FloydAlgorithm.addInitialDistances(distances, list);
-        FloydAlgorithm.addInitialNodesInShortestDistance(distances, stationsInShortestPath);
-
-        // Floyd's Algorithm.
-        FloydAlgorithm.runAlgorithm(distances, stationsInShortestPath);
-        LOGGER.info("Algorithm finished.");
-
-        // Setting up ShortestPath for marshalling.
-        LOGGER.info("Setting up shortest path.");
-        Stations stations = new Stations();
-        stations.setStationList(FloydAlgorithm.
-                getStationsInShortestPath(stationsInShortestPath, startingStationID, endingStationID));
-
-        ShortestPath shortestPath = new ShortestPath();
-        shortestPath.setStations(stations);
-        LOGGER.info("Got stations.");
-        shortestPath.setDistance(distances[startingStationID][endingStationID]);
-
-        // To get the roads, get roads where the connected stations are two next to each other in list.
-        Roads roads = new Roads();
-        List<Road> roadList = new ArrayList<>();
-        List<Station> stationList = stations.getStationList();
-
-        for(int i = 0; i < stationList.size() - 1; i++) {
-            // Make PathBetweenStations using current stations, and use its start/end IDs to select Road.
-            Station start = stationList.get(i);
-            Station end = stationList.get(i + 1);
-            PathBetweenStations path = new PathBetweenStations();
-
-            path.setStartingStationID(start.getID());
-            path.setEndingStationID(end.getID());
-            Road road = ROAD_DAO.getRoadGivenStartAndEnd(path);
-
-            roadList.add(road);
-        }
-
-        LOGGER.info("Got roads.");
-        roads.setRoadList(roadList);
-        shortestPath.setRoads(roads);
-
-        // Marshalling.
-        marshall(shortestPath);
     }
 
     public static void marshall(ShortestPath shortestPath) {
