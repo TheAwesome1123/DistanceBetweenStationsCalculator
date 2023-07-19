@@ -1,16 +1,10 @@
 package com.solvd.distancecalculator;
 
-import com.solvd.distancecalculator.daos.PathBetweenStationsDAO;
-import com.solvd.distancecalculator.daos.RoadDAO;
-import com.solvd.distancecalculator.daos.StationDAO;
 import com.solvd.distancecalculator.json.ShortestPathMarshallerJSON;
 import com.solvd.distancecalculator.models.*;
 import com.solvd.distancecalculator.xml.ShortestPathMarshallerXML;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
