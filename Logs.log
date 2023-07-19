@@ -6128,3 +6128,28 @@ Algorithm finished.
 Setting up shortest path.
 Got stations.
 Got roads.
+Number of roads: 10
+Calculating shortest distance between stations 1 and 7
+Algorithm finished.
+Setting up shortest path.
+Got stations.
+Got roads.
+Calculating shortest path.
+Retrieving paths.
+Running algorithm.
+Constructing shortest path.
+Calculating shortest path.
+Start and endpoints are the same. No travel distance.
+Constructing shortest path.
+Calculating shortest path.
+Retrieving paths.
+Running algorithm.
+Constructing shortest path.
+Calculating shortest path.
+Retrieving paths.
+Running algorithm.
+Constructing shortest path.
+Calculating shortest path.
+Retrieving paths.
+Running algorithm.
+Constructing shortest path.
